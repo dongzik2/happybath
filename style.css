@@ -1,0 +1,721 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;700&display=swap');
+
+:root {
+    --primary-mint: #8CA898; /* 옅은 민트 초록 */
+    --wood-brown: #4A3E38; /* 따뜻한 다크 브라운 */
+    --warm-bg: #F5EFEB; /* 따뜻한 아이보리 */
+    --text-dark: #332F2C; /* 세련된 먹색 */
+    --accent-pink: #D08A81; /* 옅고 따뜻한 핑크/빨강 */
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --light-cream: #FCFAF8; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif KR', serif;
+    background: radial-gradient(circle at top center, #F4E8E3 0%, #E3E9E5 100%);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.9;
+    letter-spacing: -0.2px;
+}
+
+/* 각 섹션(슬라이드)이 화면에 꽉 차도록 설정 */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem;
+    position: relative;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    color: var(--wood-brown);
+    letter-spacing: 0.5px;
+}
+
+h2 {
+    font-size: 2.8rem;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+/* 제목 아래에 얇고 세련된 밑줄 포인트 */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 1px;
+    background-color: var(--primary-mint);
+}
+
+p {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+    color: #444;
+    font-weight: 300;
+}
+
+.part-label {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 1.5rem;
+    border: 1px solid rgba(140, 168, 152, 0.6);
+    color: var(--primary-mint);
+    background-color: transparent;
+    padding: 0.4rem 1.5rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* --- 페이드인 애니메이션 --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 타이틀 (표지) 섹션 --- */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+                url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+.hero .hero-content {
+    background: rgba(40, 48, 44, 0.6); /* 짙은 민트톤/녹갈색 느낌의 반투명 */
+    padding: 6rem 7rem;
+    border-radius: 2px; 
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(140, 168, 152, 0.3);
+    backdrop-filter: blur(15px);
+}
+
+.title {
+    font-size: 5.5rem;
+    color: var(--light-cream);
+    margin-bottom: 1rem;
+    letter-spacing: 8px;
+    font-weight: 300;
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    color: var(--primary-mint);
+    letter-spacing: 5px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    color: var(--wood-brown);
+}
+
+.scroll-indicator span {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+    40% {transform: translateY(-10px) translateX(-50%);}
+    60% {transform: translateY(-5px) translateX(-50%);}
+}
+
+/* --- 시놉시스 섹션 --- */
+.synopsis {
+    background-color: transparent;
+}
+
+.bucket-list {
+    list-style: none;
+    margin-top: 2rem;
+    background: var(--warm-bg);
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    border-left: 6px solid var(--accent-pink);
+}
+
+.bucket-list li {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-dark);
+}
+
+.bucket-list li::before {
+    content: "♨";
+    position: absolute;
+    left: 0;
+    color: var(--accent-pink);
+    font-size: 1.2rem;
+}
+
+/* --- 가계도 (상호작용) 섹션 --- */
+.family-tree-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.tree-layout {
+    position: relative;
+    width: 740px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.tree-line {
+    position: absolute;
+    background-color: var(--primary-mint);
+    z-index: 1;
+}
+
+.tree-layout .person.card {
+    position: absolute;
+}
+
+.person {
+    width: 180px;
+    z-index: 2;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #EAEAEA; /* 이미지가 없을 때의 배경 */
+    border: 3px solid var(--primary-mint);
+    margin: 0 auto 15px;
+    object-fit: cover;
+    display: block;
+}
+
+.others-title {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--wood-brown);
+    font-size: 1.5rem;
+}
+
+.others-row {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 1rem;
+}
+
+.others-row .person.card {
+    position: relative;
+}
+
+.card {
+    width: 180px;
+    height: 250px;
+    cursor: pointer;
+    position: relative;
+    background: transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.card-front {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 1rem;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card:hover .card-front {
+    box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+    border-color: var(--primary-mint);
+}
+
+/* 선택된 카드 스타일 */
+.card.active .card-front {
+    border-color: var(--primary-mint);
+    background: #fff;
+    box-shadow: 0 20px 40px rgba(140, 168, 152, 0.25);
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--wood-brown);
+    word-break: keep-all;
+    font-weight: 600;
+}
+
+.card-front p {
+    font-size: 1rem;
+    color: #777;
+    margin: 0;
+}
+
+/* --- 캐릭터 상세 탭 스타일 --- */
+.character-tabs-container {
+    margin-top: 4rem;
+    width: 100%;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(140, 168, 152, 0.3);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    min-height: 250px;
+    position: relative;
+}
+
+.char-tab-content {
+    display: none;
+    padding: 3rem;
+    animation: fadeInTab 0.5s ease forwards;
+}
+
+.char-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(154, 188, 167, 0.3);
+    padding-bottom: 1.5rem;
+    text-align: left;
+}
+
+.tab-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-mint);
+    margin-right: 1.5rem;
+}
+
+.tab-title h3 {
+    margin: 0 0 0.2rem 0;
+    font-size: 1.8rem;
+    color: var(--wood-brown);
+}
+
+.tab-title .role {
+    font-size: 1.1rem;
+    color: var(--primary-mint);
+    font-weight: bold;
+}
+
+.tab-body p {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.quotes-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 2px solid var(--primary-mint);
+    margin-top: 1.5rem;
+}
+
+.quote-text {
+    font-style: italic;
+    color: var(--wood-brown) !important;
+    font-weight: 300;
+    margin-bottom: 0.5rem !important;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.quote-text:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* --- 감독의 메시지 섹션 --- */
+.director-message {
+    background-color: transparent;
+}
+
+.message-grid {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.msg-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    flex: 1;
+    padding: 3rem 2.5rem;
+    border-radius: 2px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(140, 168, 152, 0.3);
+    border-top: 3px solid var(--primary-mint);
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.msg-card:hover {
+    transform: translateY(-8px);
+}
+
+.msg-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--wood-brown);
+}
+
+.msg-card p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* --- 촬영 기법 섹션 (패럴랙스) --- */
+.cinematography-intro {
+    min-height: 40vh;
+    background: var(--warm-bg);
+}
+
+.parallax-scene {
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    position: relative;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.5); /* 장면 간 깊이감 */
+}
+
+/* --- 패럴랙스 반반 분할(Scene 1) --- */
+.split-scene {
+    background-color: #4a2525;
+}
+
+.scene-half {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    /* background-attachment: fixed; 제거하여 각 영역의 중앙(center)에 이미지가 오도록 함 */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+.left-half {
+    left: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 1-1.png');
+    background-position: left center;
+}
+
+.right-half {
+    right: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 1-2.png');
+    border-left: 2px solid rgba(255,255,255,0.4);
+}
+
+/* 각 씬별 임시 배경 (사진이 들어갈 자리) */
+/* TODO: 실제 영화 스틸컷 사진으로 대체 필요 */
+#scene2 { 
+    background-color: #2b3a42;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 2.png');
+}
+#scene3 { 
+    background-color: #3e362e;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 3 .png');
+}
+#scene4 { 
+    background-color: #555c5c;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 4.png');
+}
+
+.parallax-content {
+    background: rgba(253, 251, 247, 0.9);
+    backdrop-filter: blur(15px);
+    padding: 4.5rem;
+    border-radius: 2px;
+    max-width: 900px;
+    width: 100%;
+    border-left: 5px solid var(--primary-mint);
+    color: var(--text-dark);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+/* 안내 문구 (기본: 텍스트 보임) */
+.parallax-content::before {
+    content: "👁️ 클릭하여 배경 이미지 보기";
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 0.85rem;
+    color: var(--primary-mint);
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.parallax-content:hover::before {
+    opacity: 1;
+}
+
+/* 숨김 모드 (배경 보기) */
+.parallax-content.hide-text {
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(0px);
+    border-left-color: transparent;
+    box-shadow: none;
+}
+
+.parallax-content.hide-text::before {
+    content: "📝 다시 텍스트 보기";
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    opacity: 0.9;
+}
+
+/* 내부 요소 부드러운 전환 효과 */
+.parallax-content .scene-title,
+.parallax-content .scene-text {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.parallax-content.hide-text .scene-title,
+.parallax-content.hide-text .scene-text {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+}
+
+.scene-title {
+    font-size: 2.2rem;
+    color: var(--wood-brown);
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+}
+
+.scene-text p {
+    color: var(--text-dark);
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.scene-text p strong {
+    color: var(--wood-brown);
+    font-size: 1.3rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+/* --- 명대사 섹션 --- */
+.quote {
+    background: linear-gradient(135deg, var(--wood-brown) 0%, #1A201C 100%);
+    text-align: center;
+    position: relative;
+    color: var(--light-cream);
+}
+
+/* 럭셔리한 텍스처/그라디언트 오버레이 */
+.quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, rgba(140, 168, 152, 0.05) 0%, rgba(0,0,0,0.6) 100%);
+}
+
+.quote .container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(30px);
+    padding: 6rem 5rem;
+    border-radius: 2px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    border: 1px solid rgba(140, 168, 152, 0.2);
+}
+
+.quote h2 {
+    color: var(--light-cream);
+}
+
+.quote h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-mint);
+}
+
+.scene-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: left;
+}
+
+.scene-block {
+    background: rgba(255, 255, 255, 0.03); 
+    padding: 3rem;
+    border-radius: 2px;
+    border-left: 2px solid var(--primary-mint);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.scene-block:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(10px);
+}
+
+.scene-block h3 {
+    font-size: 1.4rem;
+    color: var(--primary-mint);
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+}
+
+.scene-block p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+}
+
+/* --- 결론(엔딩) 섹션 --- */
+.footer {
+    text-align: center;
+    background: linear-gradient(rgba(34, 34, 34, 0.8), rgba(34, 34, 34, 0.95)), 
+                url('background3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--light-cream);
+}
+
+.footer h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer h2 {
+    color: var(--primary-mint);
+    margin-bottom: 1rem;
+}
+
+.footer-info-block {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-top: 4px solid var(--wood-brown);
+}
+
+.footer-info-block h3 {
+    color: var(--light-cream) !important;
+}
+
+.footer-info-block p {
+    color: #e0e0e0;
+}
+
+.end-text {
+
+    margin-top: 4rem;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--primary-mint);
+    font-weight: 700;
+}
+
+/* --- 감독 소개 섹션 스타일 --- */
+.director-profile {
+    background-color: transparent;
+}
+
+@media (min-width: 768px) {
+    .director-card {
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 4rem !important;
+    }
+    .director-img-wrapper {
+        flex-shrink: 0;
+    }
+}
