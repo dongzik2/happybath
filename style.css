@@ -914,3 +914,103 @@ p {
     margin: 0;
     line-height: 1.6;
 }
+
+/* --- Setup & Payoff 심층 분석 섹션 스타일 --- */
+.setup-payoff {
+    background-color: transparent;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.payoff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.payoff-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(140, 168, 152, 0.3);
+    border-top: 4px solid var(--primary-mint);
+    padding: 3rem 2.5rem;
+    border-radius: 2px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.payoff-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(140, 168, 152, 0.15);
+    border-color: var(--primary-mint);
+    border-top-color: var(--accent-pink);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.payoff-card:hover .card-icon {
+    transform: scale(1.15);
+}
+
+.metaphor-tag {
+    display: inline-block;
+    width: fit-content;
+    font-size: 0.85rem;
+    color: var(--accent-pink);
+    border: 1px solid var(--accent-pink);
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.payoff-card:hover .metaphor-tag {
+    background: var(--accent-pink);
+    color: #fff;
+}
+
+.payoff-content h3 {
+    font-size: 1.35rem;
+    color: var(--wood-brown);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    word-break: keep-all;
+    line-height: 1.4;
+}
+
+.setup-text, .payoff-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    color: var(--text-dark);
+    font-weight: 300;
+}
+
+.payoff-text {
+    margin-bottom: 0;
+}
+
+.setup-text strong {
+    color: var(--primary-mint);
+    font-weight: 700;
+    margin-right: 0.3rem;
+}
+
+.payoff-text strong {
+    color: var(--accent-pink);
+    font-weight: 700;
+    margin-right: 0.3rem;
+}

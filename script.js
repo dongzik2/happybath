@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevBtn = scene.querySelector('.prev-btn');
         const nextBtn = scene.querySelector('.next-btn');
         let currentSlide = 0;
+        let autoPlayInterval;
 
         function goToSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
@@ -96,15 +97,35 @@ document.addEventListener('DOMContentLoaded', () => {
             if (dots[currentSlide]) dots[currentSlide].classList.add('active');
         }
 
+        function startAutoPlay() {
+            stopAutoPlay();
+            autoPlayInterval = setInterval(() => {
+                goToSlide(currentSlide + 1);
+            }, 5000); // 5초 간격 자동 전환
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+        }
+
+        // 자동 재생 시작
+        startAutoPlay();
+
+        // 마우스 호버 시 일시정지, 벗어나면 다시 재생
+        scene.addEventListener('mouseenter', stopAutoPlay);
+        scene.addEventListener('mouseleave', startAutoPlay);
+
         if (prevBtn && nextBtn) {
             prevBtn.addEventListener('click', (e) => {
                 e.stopPropagation(); // 텍스트 상자 토글 이벤트 버블링 방지
                 goToSlide(currentSlide - 1);
+                startAutoPlay(); // 수동 조작 시 타이머 리셋
             });
 
             nextBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 goToSlide(currentSlide + 1);
+                startAutoPlay();
             });
         }
 
@@ -112,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dot.addEventListener('click', (e) => {
                 e.stopPropagation();
                 goToSlide(idx);
+                startAutoPlay();
             });
         });
     });
