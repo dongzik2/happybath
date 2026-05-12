@@ -59,4 +59,55 @@ document.addEventListener('DOMContentLoaded', () => {
             content.classList.toggle('hide-text');
         });
     });
+
+    // --- 상단 고정 내비게이션 바 (Sticky Nav) 스크롤 연동 로직 ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section[id]');
+
+    // 1. 내비게이션 링크 클릭 시 부드러운 스크롤 이동 (상단 고정 헤더 높이 보정)
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').replace('#', '');
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                const headerHeight = 70; // sticky-nav 높이
+                const sectionTop = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({
+                    top: sectionTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // 2. 스크롤 위치에 따른 실시간 활성 탭 업데이트
+    window.addEventListener('scroll', () => {
+        let currentSectionId = '';
+        const scrollPosition = window.pageYOffset + 150; // 여유 트리거 범위 보정
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        // 마지막 섹션(결론)의 경우 스크롤 끝에 도달했을 때 확실히 활성화
+        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) {
+            const lastSection = sections[sections.length - 1];
+            if (lastSection) {
+                currentSectionId = lastSection.getAttribute('id');
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
+                link.classList.add('active');
+            }
+        });
+    });
 });
