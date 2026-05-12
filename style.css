@@ -518,12 +518,12 @@ p {
 
 .slide-2 {
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 1-2.png');
+    /* 빨간색 자동차가 풀샷 프레임에 최적으로 나오도록 센터링 */
+    background-position: center center;
 }
 
 .slide-3 {
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 1-3.png');
-    /* 빨간색 자동차가 풀샷 프레임에 최적으로 나오도록 센터링 */
-    background-position: center center;
 }
 
 /* Scene 2 풀샷 슬라이드 매핑 */
