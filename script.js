@@ -60,19 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 상단 고정 내비게이션 바 (Sticky Nav) 스크롤 연동 로직 ---
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.section[id]');
-
-    // 1. 내비게이션 링크 클릭 시 부드러운 스크롤 이동 (상단 고정 헤더 높이 보정)
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // --- 목차 카드(A 버전) 클릭 시 부드러운 스크롤 이동 로직 ---
+    const tocCards = document.querySelectorAll('.toc-card');
+    tocCards.forEach(card => {
+        card.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = link.getAttribute('href').replace('#', '');
+            const targetId = card.getAttribute('href').replace('#', '');
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
-                const headerHeight = 70; // sticky-nav 높이
-                const sectionTop = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                const sectionTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
                 window.scrollTo({
                     top: sectionTop,
                     behavior: 'smooth'
@@ -81,33 +77,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. 스크롤 위치에 따른 실시간 활성 탭 업데이트
-    window.addEventListener('scroll', () => {
-        let currentSectionId = '';
-        const scrollPosition = window.pageYOffset + 150; // 여유 트리거 범위 보정
+    // --- 각 씬별 독립적인 풀샷 캐러셀 전환 로직 ---
+    const carouselScenes = document.querySelectorAll('.carousel-scene');
+    carouselScenes.forEach(scene => {
+        const slides = scene.querySelectorAll('.carousel-slide');
+        const dots = scene.querySelectorAll('.carousel-dots .dot');
+        const prevBtn = scene.querySelector('.prev-btn');
+        const nextBtn = scene.querySelector('.next-btn');
+        let currentSlide = 0;
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
-
-        // 마지막 섹션(결론)의 경우 스크롤 끝에 도달했을 때 확실히 활성화
-        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) {
-            const lastSection = sections[sections.length - 1];
-            if (lastSection) {
-                currentSectionId = lastSection.getAttribute('id');
-            }
+        function goToSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (index + slides.length) % slides.length;
+            
+            if (slides[currentSlide]) slides[currentSlide].classList.add('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
         }
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
-                link.classList.add('active');
-            }
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // 텍스트 상자 토글 이벤트 버블링 방지
+                goToSlide(currentSlide - 1);
+            });
+
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToSlide(currentSlide + 1);
+            });
+        }
+
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToSlide(idx);
+            });
         });
     });
 });

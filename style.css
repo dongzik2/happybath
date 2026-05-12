@@ -106,15 +106,30 @@ p {
 
 /* --- 타이틀 (표지) 섹션 --- */
 .hero {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-color: #2b1b1b;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-                url('background.png');
+                url('new.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    text-align: center;
+    background-repeat: no-repeat;
+    transform: scale(1.35); /* 메인 이미지 상하단 바 완벽 제거 */
+    z-index: 1;
 }
 
 .hero .hero-content {
+    position: relative;
+    z-index: 2;
     background: rgba(40, 48, 44, 0.6); /* 짙은 민트톤/녹갈색 느낌의 반투명 */
     padding: 6rem 7rem;
     border-radius: 2px; 
@@ -450,60 +465,156 @@ p {
 
 .parallax-scene {
     min-height: 100vh;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 4rem 2rem;
     position: relative;
+    overflow: hidden;
     box-shadow: inset 0 0 100px rgba(0,0,0,0.5); /* 장면 간 깊이감 */
 }
 
-/* --- 패럴랙스 반반 분할(Scene 1) --- */
-.split-scene {
-    background-color: #4a2525;
-}
-
-.scene-half {
+/* 공통 이너 배경 레이어 (레터박스 바 제거용) */
+.scene-bg {
     position: absolute;
     top: 0;
-    bottom: 0;
-    width: 50%;
-    /* background-attachment: fixed; 제거하여 각 영역의 중앙(center)에 이미지가 오도록 함 */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    transform: scale(1.35); /* 상하단 레터박스 검은 바 완벽 크롭 */
     z-index: 1;
 }
 
-.left-half {
+/* --- 패럴랙스 풀샷 슬라이드쇼(Scene 1 캐러셀) --- */
+.carousel-scene {
+    background-color: #2b1b1b;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
     left: 0;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 1-1.png');
-    background-position: left center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.35); /* 추가: 풀샷의 상하단 검은 바 제거 */
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
 }
 
-.right-half {
-    right: 0;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 1-2.png');
-    border-left: 2px solid rgba(255,255,255,0.4);
+.carousel-slide.active {
+    opacity: 1;
 }
 
-/* 각 씬별 임시 배경 (사진이 들어갈 자리) */
-/* TODO: 실제 영화 스틸컷 사진으로 대체 필요 */
-#scene2 { 
-    background-color: #2b3a42;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 2.png');
+.slide-1 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 1-1.png');
 }
-#scene3 { 
-    background-color: #3e362e;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 3 .png');
+
+.slide-2 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 1-2.png');
 }
-#scene4 { 
-    background-color: #555c5c;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Scene 4.png');
+
+.slide-3 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 1-3.png');
+    /* 빨간색 자동차가 풀샷 프레임에 최적으로 나오도록 센터링 */
+    background-position: center center;
+}
+
+/* Scene 2 풀샷 슬라이드 매핑 */
+.scene2-slide1 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 2-1.png');
+}
+.scene2-slide2 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 2-2.png');
+}
+.scene2-slide3 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 2-3.png');
+}
+
+/* Scene 3 풀샷 슬라이드 매핑 */
+.scene3-slide1 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 3.png');
+}
+.scene3-slide2 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 3-2.png');
+}
+
+/* Scene 4 풀샷 슬라이드 매핑 */
+.scene4-slide1 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 4-1.png');
+}
+.scene4-slide2 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Scene 4-2.png');
+}
+
+/* 캐러셀 제어 버튼 스타일 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 2.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-50%) scale(1.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.prev-btn {
+    left: 2rem;
+}
+
+.next-btn {
+    right: 2rem;
+}
+
+/* 하단 인디케이터(Dots) 스타일 */
+.carousel-dots {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.dot.active {
+    background: var(--accent-pink);
+    width: 30px;
+    border-radius: 6px;
 }
 
 .parallax-content {
@@ -519,6 +630,7 @@ p {
     cursor: pointer;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
+    z-index: 2; /* 배경 위에 항상 표시 */
 }
 
 /* 안내 문구 (기본: 텍스트 보임) */
@@ -720,96 +832,85 @@ p {
     }
 }
 
-/* --- 상단 고정 내비게이션 바 (Sticky Navigation) --- */
-.sticky-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(140, 168, 152, 0.2);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    transition: all 0.4s ease;
+/* --- 목차 섹션 스타일 (A 버전) --- */
+.toc-section {
+    background-color: transparent;
+    padding-top: 2rem;
 }
 
-.nav-container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-logo {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--wood-brown);
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-}
-
-.nav-logo:hover {
-    color: var(--primary-mint);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    margin: 0;
+    width: 100%;
 }
 
-.nav-link {
+.toc-card {
+    display: flex;
+    align-items: flex-start;
+    background: rgba(253, 251, 247, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(196, 164, 124, 0.3);
+    padding: 2.5rem;
+    border-radius: 2px;
     text-decoration: none;
     color: var(--text-dark);
-    font-size: 0.95rem;
-    font-weight: 400;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
-    padding: 0.5rem 0;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.toc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary-mint);
+    transition: background-color 0.3s ease;
+}
+
+.toc-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(140, 168, 152, 0.15);
+    border-color: rgba(140, 168, 152, 0.5);
+}
+
+.toc-card:hover::before {
+    background-color: var(--accent-pink);
+}
+
+.toc-number {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--primary-mint);
+    margin-right: 1.5rem;
+    line-height: 1;
+    transition: color 0.3s ease;
+    font-family: sans-serif;
+}
+
+.toc-card:hover .toc-number {
+    color: var(--accent-pink);
+}
+
+.toc-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--wood-brown);
+    font-weight: 700;
     transition: color 0.3s ease;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: var(--accent-pink);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover {
+.toc-card:hover .toc-info h3 {
     color: var(--accent-pink);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
-
-.nav-link.active {
-    color: var(--accent-pink);
-    font-weight: 700;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        gap: 1rem;
-    }
-    .nav-link {
-        font-size: 0.85rem;
-    }
-    .nav-logo {
-        font-size: 1.1rem;
-    }
+.toc-info p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
 }

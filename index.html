@@ -9,21 +9,8 @@
 </head>
 <body>
     
-    <nav class="sticky-nav fade-in">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">행복 목욕탕</a>
-            <ul class="nav-links">
-                <li><a href="#part1" class="nav-link">개요</a></li>
-                <li><a href="#part2" class="nav-link">감독 소개</a></li>
-                <li><a href="#part3" class="nav-link">등장인물</a></li>
-                <li><a href="#part4" class="nav-link">미장센 분석</a></li>
-                <li><a href="#part5" class="nav-link">메시지</a></li>
-                <li><a href="#part6" class="nav-link">결론</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <header class="hero section">
+        <div class="hero-bg"></div>
         <div class="hero-content fade-in">
             <h1 class="title">행복 목욕탕</h1>
             <p class="subtitle">湯を沸かすほどの熱い愛</p>
@@ -33,6 +20,60 @@
             </div>
         </div>
     </header>
+
+    <!-- 목차 섹션 (A 버전) -->
+    <section class="toc-section section" id="toc">
+        <div class="container fade-in">
+            <span class="part-label" style="border-color: var(--accent-pink); color: var(--accent-pink);">Index</span>
+            <h2>발표 목차</h2>
+            <p style="text-align: center; color: #777; margin-bottom: 4rem;">각 목차 카드를 클릭하시면 해당 파트로 부드럽게 이동합니다.</p>
+            
+            <div class="toc-grid">
+                <a href="#part1" class="toc-card">
+                    <div class="toc-number">01</div>
+                    <div class="toc-info">
+                        <h3>개요 및 줄거리</h3>
+                        <p>영화 기본 정보 및 핵심 줄거리 요약</p>
+                    </div>
+                </a>
+                <a href="#part2" class="toc-card">
+                    <div class="toc-number">02</div>
+                    <div class="toc-info">
+                        <h3>감독 소개</h3>
+                        <p>나카노 료타 감독의 철학과 주요 수상 성과</p>
+                    </div>
+                </a>
+                <a href="#part3" class="toc-card">
+                    <div class="toc-number">03</div>
+                    <div class="toc-info">
+                        <h3>등장인물 및 관계도</h3>
+                        <p>입체적 캐릭터 분석 및 관계망 탐구</p>
+                    </div>
+                </a>
+                <a href="#part4" class="toc-card">
+                    <div class="toc-number">04</div>
+                    <div class="toc-info">
+                        <h3>미장센 및 연출 분석</h3>
+                        <p>색채, 촬영 숏, 공간 및 사물의 상징성</p>
+                    </div>
+                </a>
+                <a href="#part5" class="toc-card">
+                    <div class="toc-number">05</div>
+                    <div class="toc-info">
+                        <h3>감독의 메시지</h3>
+                        <p>결핍을 채우는 뜨거운 유대감과 대안 가족</p>
+                    </div>
+                </a>
+                <a href="#part6" class="toc-card">
+                    <div class="toc-number">06</div>
+                    <div class="toc-info">
+                        <h3>결론 및 총평</h3>
+                        <p>작품이 남긴 묵직한 울림과 최종 요약</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <section class="synopsis section" id="part1">
         <div class="container fade-in">
@@ -57,26 +98,37 @@
     </section>
 
     <section class="director-profile section" id="part2">
-        <div class="container fade-in">
+        <div class="container fade-in" style="max-width: 1150px;">
             <span class="part-label">Part 2</span>
-            <h2>감독 소개 및 연출 세계</h2>
-            <div class="director-card" style="display: flex; flex-direction: column; gap: 3rem; align-items: center; background: rgba(253, 251, 247, 0.85); backdrop-filter: blur(15px); padding: 4rem; border-radius: 2px; margin-top: 2rem; box-shadow: 0 25px 60px rgba(0,0,0,0.06); border: 1px solid rgba(196, 164, 124, 0.3);">
-                <div class="director-img-wrapper" style="text-align: center;">
-                    <img src="감독.jpg" alt="나카노 료타 감독" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 3px solid var(--primary-mint); box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
-                    <h3 style="margin-top: 1.5rem; margin-bottom: 0.2rem; font-size: 1.6rem; color: var(--wood-brown); font-weight: 700;">나카노 료타</h3>
-                    <p style="font-size: 1rem; color: var(--primary-mint); font-weight: 600; margin-bottom: 0; letter-spacing: 1px;">Ryota Nakano</p>
-                </div>
-                <div class="director-info" style="text-align: left; width: 100%;">
-                    <p style="font-size: 1.15rem; margin-bottom: 1.2rem; color: var(--text-dark); font-weight: 300; letter-spacing: -0.2px;">나카노 료타 감독은 대학 졸업 후 일본영화학교를 거쳐 단편 《호박과 마요네즈》, 첫 장편 《캡처링 대디(2012)》로 베를린국제영화제 등 전 세계의 주목을 받으며 데뷔했습니다.</p>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.2rem; color: var(--text-dark); font-weight: 300; letter-spacing: -0.2px;"><strong style="font-weight: 400; color: var(--wood-brown);">대표작:</strong> 《행복 목욕탕(2016)》, 《조금씩, 천천히 안녕(2019)》, 《아사다 가족(2020)》 등</p>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.2rem; color: var(--text-dark); font-weight: 300; letter-spacing: -0.2px;"><strong style="font-weight: 400; color: var(--wood-brown);">주요 수상 및 성과:</strong> 《행복 목욕탕》으로 제40회 일본 아카데미상 우수 작품상·감독상 등 6관왕 및 호치 영화상 작품상을 수상했습니다. 또한 《아사다 가족》으로 바르샤바 국제영화제 최우수 아시아 영화상을 수상하는 등, 감독 개인의 연출상뿐만 아니라 다수의 작품상을 휩쓸며 탁월한 완성도를 입증했습니다.</p>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem; color: var(--text-dark); font-weight: 300; letter-spacing: -0.2px;"><strong style="font-weight: 400; color: var(--wood-brown);">독보적인 '가족 영화' 스페셜리스트:</strong> 나카노 료타 감독은 데뷔작부터 일관되게 <span style="color: var(--accent-pink); font-weight: 400;">'가족의 해체와 재생'</span>이라는 화두를 탐구해왔습니다. 상실, 부재, 죽음과 같은 무겁고 근원적인 주제를 다루면서도, 특유의 따뜻하고 유쾌한 유머를 잃지 않는 독창적인 연출 세계를 구축했습니다.</p>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.6); padding: 1.5rem 2rem; border-left: 3px solid var(--primary-mint); border-radius: 2px; margin-top: 2rem;">
-                        <p style="font-size: 1.05rem; font-style: italic; color: var(--wood-brown); margin: 0; font-weight: 400; line-height: 1.7;">
-                            "슬픈 상황일수록 인간이 가진 온기와 유머가 더욱 빛을 발합니다. 저는 완벽하지 않은 인물들이 서로의 결핍을 채워가며 진짜 가족이 되어가는 과정을 담고 싶습니다."
-                        </p>
+            <h2>감독 소개</h2>
+            <div class="director-card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; background: rgba(253, 251, 247, 0.85); backdrop-filter: blur(15px); padding: 4rem; border-radius: 2px; margin-top: 2rem; box-shadow: 0 25px 60px rgba(0,0,0,0.06); border: 1px solid rgba(196, 164, 124, 0.3);">
+                <!-- 좌측: 감독 정보 및 철학 -->
+                <div class="director-left" style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div class="director-img-wrapper" style="display: flex; align-items: center; gap: 2rem; text-align: left;">
+                        <img src="감독.jpg" alt="나카노 료타 감독" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 3px solid var(--primary-mint); box-shadow: 0 15px 35px rgba(0,0,0,0.1); flex-shrink: 0;">
+                        <div>
+                            <h3 style="margin-bottom: 0.2rem; font-size: 1.6rem; color: var(--wood-brown); font-weight: 700;">나카노 료타</h3>
+                            <p style="font-size: 1rem; color: var(--primary-mint); font-weight: 600; margin-bottom: 0; letter-spacing: 1px;">Ryota Nakano</p>
+                        </div>
                     </div>
+                    <div class="director-info" style="text-align: left; width: 100%;">
+                        <p style="font-size: 1.1rem; margin-bottom: 1.2rem; color: var(--text-dark); font-weight: 300; letter-spacing: -0.2px;">나카노 료타 감독은 대학 졸업 후 일본영화학교를 거쳐 단편 《호박과 마요네즈》, 그리고 첫 장편 데뷔작인 《캡처링 대디(2012)》를 통해 베를린국제영화제에 초청되는 등 일찍이 전 세계 평단의 주목을 받으며 성공적으로 데뷔했습니다.</p>
+                        <p style="font-size: 1.1rem; margin-bottom: 1.2rem; color: var(--text-dark); font-weight: 300; letter-spacing: -0.2px;">이후 선보인 대표작 《행복 목욕탕》으로 제40회 일본 아카데미상에서 우수 작품상과 감독상을 포함한 6관왕의 쾌거를 달성했으며, 후속작인 《아사다 가족》 역시 바르샤바 국제영화제 최우수 아시아 영화상을 수상하는 등 발표하는 작품마다 유수의 영화제에서 작품상을 휩쓸며 탁월한 연출력을 입증해 왔습니다.</p>
+                        <p style="font-size: 1.1rem; margin-bottom: 0; color: var(--text-dark); font-weight: 300; letter-spacing: -0.2px;">특히 그는 데뷔작부터 지금까지 일관되게 <span style="color: var(--accent-pink); font-weight: 400;">'가족의 해체와 재생'</span>이라는 주제를 깊이 있게 탐구해 온 가족 영화 스페셜리스트입니다. 상실과 죽음이라는 무거운 소재 앞에서도 특유의 따뜻한 시선과 유머를 잃지 않으며, 관객들에게 깊은 울림과 위로를 전하는 독창적인 연출 세계를 구축하고 있습니다.</p>
+                        
+                        <div style="background: rgba(255, 255, 255, 0.6); padding: 1.5rem; border-left: 3px solid var(--primary-mint); border-radius: 2px; margin-top: 2rem;">
+                            <p style="font-size: 0.95rem; font-style: italic; color: var(--wood-brown); margin: 0; font-weight: 400; line-height: 1.7;">
+                                "슬픈 상황일수록 인간이 가진 온기와 유머가 더욱 빛을 발합니다. 완벽하지 않은 인물들이 결핍을 채워가며 진짜 가족이 되어가는 과정을 담고 싶습니다."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 우측: 필모그래피 포스터 모음 이미지 첨부 -->
+                <div class="director-right-filmography" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding-left: 2rem; border-left: 1px solid rgba(196, 164, 124, 0.2);">
+                    <span style="font-size: 0.85rem; color: var(--primary-mint); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; display: block;">Filmography</span>
+                    <!-- 첨부해주신 세로형 필모그래피 이미지 배치 -->
+                    <img src="필모.png" alt="나카노 료타 감독 필모그래피" style="max-width: 100%; height: auto; max-height: 550px; object-fit: contain; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
                 </div>
             </div>
         </div>
@@ -306,15 +358,29 @@
     <section class="cinematography-intro section" id="part4">
         <div class="container fade-in" style="text-align: center;">
             <span class="part-label">Part 4</span>
-            <h2>미장센 & 연출 정밀 분석</h2>
+            <h2>미장센 및 연출 분석</h2>
             <p style="color: #777;">아래로 스크롤하여 각 연출 기법과 숨겨진 의도를 확인하세요.</p>
         </div>
     </section>
 
-    <!-- Parallax 1: 색채 미장센 -->
-    <div class="parallax-scene split-scene" id="scene1">
-        <div class="scene-half left-half"></div>
-        <div class="scene-half right-half"></div>
+    <!-- Parallax 1: 색채 미장센 (풀샷 캐러셀) -->
+    <div class="parallax-scene carousel-scene" id="scene1">
+        <!-- 슬라이드 풀샷 배경 -->
+        <div class="carousel-slide slide-1 active"></div>
+        <div class="carousel-slide slide-2"></div>
+        <div class="carousel-slide slide-3"></div>
+        
+        <!-- 캐러셀 제어 버튼 -->
+        <button class="carousel-btn prev-btn" aria-label="이전 이미지">‹</button>
+        <button class="carousel-btn next-btn" aria-label="다음 이미지">›</button>
+        
+        <!-- 인디케이터 (Dots) -->
+        <div class="carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+
         <div class="parallax-content fade-in" style="position: relative; z-index: 2;">
             <h3 class="scene-title">1. 색채 미장센: '빨강(赤)'의 온도 연출</h3>
             <div class="scene-text">
@@ -326,8 +392,24 @@
     </div>
 
     <!-- Parallax 2: 촬영 기법 -->
-    <div class="parallax-scene" id="scene2">
-        <div class="parallax-content fade-in">
+    <div class="parallax-scene carousel-scene" id="scene2">
+        <!-- 슬라이드 풀샷 배경 -->
+        <div class="carousel-slide scene2-slide1 active"></div>
+        <div class="carousel-slide scene2-slide2"></div>
+        <div class="carousel-slide scene2-slide3"></div>
+        
+        <!-- 캐러셀 제어 버튼 -->
+        <button class="carousel-btn prev-btn" aria-label="이전 이미지">‹</button>
+        <button class="carousel-btn next-btn" aria-label="다음 이미지">›</button>
+        
+        <!-- 인디케이터 (Dots) -->
+        <div class="carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+
+        <div class="parallax-content fade-in" style="position: relative; z-index: 2;">
             <h3 class="scene-title">2. 촬영 기법: 전통의 현대적 변용</h3>
             <div class="scene-text">
                 <p><strong>이케우치 요시히로 촬영 감독</strong><br>일본 영화의 거장 오즈 야스지로의 고전적 문법을 계승하면서도 독창적으로 변용했습니다.</p>
@@ -339,8 +421,22 @@
     </div>
 
     <!-- Parallax 3: 공간과 사물의 상징성 -->
-    <div class="parallax-scene" id="scene3">
-        <div class="parallax-content fade-in">
+    <div class="parallax-scene carousel-scene" id="scene3">
+        <!-- 슬라이드 풀샷 배경 -->
+        <div class="carousel-slide scene3-slide1 active"></div>
+        <div class="carousel-slide scene3-slide2"></div>
+        
+        <!-- 캐러셀 제어 버튼 -->
+        <button class="carousel-btn prev-btn" aria-label="이전 이미지">‹</button>
+        <button class="carousel-btn next-btn" aria-label="다음 이미지">›</button>
+        
+        <!-- 인디케이터 (Dots) -->
+        <div class="carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+        </div>
+
+        <div class="parallax-content fade-in" style="position: relative; z-index: 2;">
             <h3 class="scene-title">3. 공간과 사물의 상징성 (Symbolism)</h3>
             <div class="scene-text">
                 <p><strong>굴뚝 (생존의 신호)</strong><br>감독은 굴뚝에서 나는 연기를 "살아있다는 증거(生きている証)"라고 정의했습니다. 굴뚝은 목욕탕의 심장이며, 후타바가 부재하는 순간에도 피어오르는 연기는 그녀의 정신이 가족을 지탱하고 있음을 뜻합니다.</p>
@@ -350,8 +446,22 @@
     </div>
 
     <!-- Parallax 4: 빛과 질감 -->
-    <div class="parallax-scene" id="scene4">
-        <div class="parallax-content fade-in">
+    <div class="parallax-scene carousel-scene" id="scene4">
+        <!-- 슬라이드 풀샷 배경 -->
+        <div class="carousel-slide scene4-slide1 active"></div>
+        <div class="carousel-slide scene4-slide2"></div>
+        
+        <!-- 캐러셀 제어 버튼 -->
+        <button class="carousel-btn prev-btn" aria-label="이전 이미지">‹</button>
+        <button class="carousel-btn next-btn" aria-label="다음 이미지">›</button>
+        
+        <!-- 인디케이터 (Dots) -->
+        <div class="carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+        </div>
+
+        <div class="parallax-content fade-in" style="position: relative; z-index: 2;">
             <h3 class="scene-title">4. 빛과 질감: 리얼리티의 구현</h3>
             <div class="scene-text">
                 <p><strong>생활형 조명 (Natural Lighting)</strong><br>실제 90년 된 노포 목욕탕 '메이진유(月の湯)'의 자연광과 내부 형광등 빛을 그대로 활용했습니다. 인위적인 미화를 배제해 '사치노유'라는 공간에 강력한 실제감을 부여했습니다.</p>
